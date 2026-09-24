@@ -1,7 +1,8 @@
 {
-  "name": "anpr-intelligence-platform",
+  "name": "aaharsetu",
   "private": true,
   "version": "1.0.0",
+  "description": "Inclusive Food Safety & Community Assistance Platform (Student Prototype)",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,12 +11,10 @@
   },
   "dependencies": {
     "lucide-react": "^1.16.0",
-    "maplibre-gl": "^6.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
-    "recharts": "^3.10.1",
-    "zustand": "^5.0.2"
+    "recharts": "^3.10.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
