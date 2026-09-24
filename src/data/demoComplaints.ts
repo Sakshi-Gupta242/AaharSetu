@@ -11,15 +11,15 @@ export const INITIAL_DEMO_COMPLAINTS: Complaint[] = [
     stallType: 'Packaged Retail / Corner Shop',
     date: '2025-05-12',
     detectedRiskFactors: [
-      'Microbial decomposition / Potential anaerobic gas production (e.g., Clostridium botulinum risk in canned/pouched foods)',
-      'Loss of hermetic seal / packaging fermentation failure'
+      'Possible spoilage or packaging-related food safety concern (loss of seal/fermentation indicator). Note: This prototype cannot determine the actual cause or confirm contamination.',
+      'Compromised hermetic container seal'
     ],
     prototypePriority: 'High',
-    priorityExplanation: 'Elevated acute food-safety hazard detected. Microbial toxins or anaerobic fermentation inside airtight beverage container identified.',
+    priorityExplanation: 'Possible spoilage or packaging-related food safety concern. Note: This prototype cannot determine the actual cause, confirm contamination, or provide laboratory analysis.',
     recommendedActions: [
-      'Do not consume or taste the affected item under any circumstances.',
+      'Do not consume or taste the affected item.',
       'Preserve packaging, batch number, and purchase receipt in a secure bag for evidence.',
-      'Alert the retail merchant immediately to halt sale of this batch.'
+      'Alert the retail merchant immediately regarding the observed condition.'
     ],
     status: 'Flagged for Guidance',
     createdAt: '2025-05-12T10:15:00.000Z',
@@ -35,11 +35,11 @@ export const INITIAL_DEMO_COMPLAINTS: Complaint[] = [
     stallType: 'Street Food Cart / Fryer Stall',
     date: '2025-05-14',
     detectedRiskFactors: [
-      'Direct human-to-food cross-contamination vector (Staphylococcus/Enteric pathogens)',
-      'Environmental vector breeding / Airborne dust & microbial drift'
+      'Observable hygiene lapse during food storage (uncovered food near open drain)',
+      'Environmental hygiene concern in vicinity of food preparation area'
     ],
     prototypePriority: 'Medium',
-    priorityExplanation: 'Moderate hygiene vulnerability identified. Presents a risk of vector-borne cross-contamination from flies and roadside drain aerosols.',
+    priorityExplanation: 'Moderate hygiene vulnerability identified based on submitted description. Note: This prototype cannot determine actual bacterial levels or confirm contamination.',
     recommendedActions: [
       'Refrain from consuming items exposed to open dust or fly contact.',
       'Politely encourage vendor to install transparent mesh domes or sneeze guards.',
@@ -59,14 +59,14 @@ export const INITIAL_DEMO_COMPLAINTS: Complaint[] = [
     stallType: 'Tandoor & Snack Counter',
     date: '2025-05-16',
     detectedRiskFactors: [
-      'Chemical adulterant / Non-permitted industrial color toxicity (Possible Malachite Green / non-food grade coloring)'
+      'Suspected non-permitted color additive or foreign substance indicator requiring laboratory verification.'
     ],
     prototypePriority: 'High',
-    priorityExplanation: 'High chemical hazard potential. Use of non-food grade color additives may pose acute toxicological and gastrointestinal risks.',
+    priorityExplanation: 'Suspected non-permitted color additive indicator reported. Note: This educational prototype cannot perform chemical analysis or confirm adulteration without laboratory testing.',
     recommendedActions: [
-      'Avoid consumption of foods with neon or synthetic staining dyes.',
-      'Document stall name and product batch with clear photo evidence.',
-      'Seek natural herb/spice colored food options.'
+      'Avoid consumption of foods with suspicious synthetic staining dyes.',
+      'Document stall location and product details.',
+      'Seek naturally seasoned and colored food options.'
     ],
     status: 'Flagged for Guidance',
     createdAt: '2025-05-16T18:45:00.000Z',
@@ -82,14 +82,14 @@ export const INITIAL_DEMO_COMPLAINTS: Complaint[] = [
     stallType: 'Packaged Retail Stall',
     date: '2025-05-18',
     detectedRiskFactors: [
-      'Regulatory transparency gap / Undeclared shelf life & allergen exposure hazard'
+      'Missing or illegible mandatory packaging label information (e.g. date of manufacture, expiry, or ingredients).'
     ],
     prototypePriority: 'Low',
-    priorityExplanation: 'Administrative and labeling transparency violation. Low immediate toxicity risk unless signs of rancidity or mold are present.',
+    priorityExplanation: 'Administrative and labeling transparency observation without immediate physical hazard indicators in the submitted description.',
     recommendedActions: [
-      'Check for fresh oil odor before consuming; discard if stale or rancid.',
+      'Check for fresh aroma before consuming; do not consume if stale or rancid.',
       'Return packet to shopkeeper and request verified labeled stock.',
-      'Verify FSSAI license printing on packaged goods.'
+      'Verify standard product labeling on packaged goods.'
     ],
     status: 'Resolved',
     createdAt: '2025-05-18T11:20:00.000Z',
@@ -105,11 +105,11 @@ export const INITIAL_DEMO_COMPLAINTS: Complaint[] = [
     stallType: 'Chaat / Street Food Cart',
     date: '2025-05-19',
     detectedRiskFactors: [
-      'Temperature Danger Zone abuse (Prolonged storage above 35°C promoting rapid bacterial multiplication)',
+      'Possible spoilage or packaging-related food safety concern (unrefrigerated perishable storage in heat). Note: This prototype cannot determine the actual cause or confirm contamination.',
       'Uncovered perishable food exposure'
     ],
     prototypePriority: 'High',
-    priorityExplanation: 'High microbiological spoilage risk. Dairy products stored at ambient summer heat ferment rapidly and harbor high bacterial loads.',
+    priorityExplanation: 'Possible spoilage or packaging-related food safety concern. Note: This prototype cannot determine actual bacterial levels, confirm contamination, or provide clinical advice.',
     recommendedActions: [
       'Do not consume warm souring dairy items from open street containers.',
       'Advise stall operator to maintain curd and chutneys over ice beds.'

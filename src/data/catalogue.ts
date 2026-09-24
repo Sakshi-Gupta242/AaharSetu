@@ -33,7 +33,7 @@ export const VENDOR_QUESTIONS: VendorQuestion[] = [
     id: 3,
     questionEn: 'Are raw and cooked foods separated?',
     questionHi: 'क्या कच्चा और पका हुआ भोजन अलग-अलग रखा जाता है?',
-    guidanceEn: 'Prevent cross-contamination by using dedicated bowls, knives, and chopping boards for raw veggies/meat and ready food.',
+    guidanceEn: 'Prevent cross-contamination by using dedicated bowls, knives, and chopping boards for raw ingredients and ready food.',
     guidanceHi: 'कच्चे और पके भोजन के लिए अलग-अलग बर्तन, चाकू और कटिंग बोर्ड का प्रयोग करें।',
     category: 'food_protection',
     weight: 10
@@ -87,7 +87,7 @@ export const VENDOR_QUESTIONS: VendorQuestion[] = [
     id: 9,
     questionEn: 'Are perishable foods stored appropriately?',
     questionHi: 'क्या जल्दी खराब होने वाली सामग्री (दही, पनीर, चटनी) ठंडी जगह या बर्फ के साथ रखी जाती है?',
-    guidanceEn: 'Keep dairy, chutneys, and sauces in insulated ice boxes or below 5°C to avoid bacterial growth in summer.',
+    guidanceEn: 'Keep dairy, chutneys, and sauces in insulated ice boxes or below 5°C to avoid rapid spoilage in warm weather.',
     guidanceHi: 'दही, हरी चटनी और पनीर को धूप से बचाकर इंसुलेटेड आइस बॉक्स में रखें।',
     category: 'storage_pest',
     weight: 10
@@ -95,9 +95,9 @@ export const VENDOR_QUESTIONS: VendorQuestion[] = [
   {
     id: 10,
     questionEn: 'Are pests/insects prevented from contacting food?',
-    questionHi: 'क्या मक्खियों, मच्छरों और चूहों को भोजन के संपर्क में आने से रोका जाता है?',
-    guidanceEn: 'Use mesh nets, insect screens, fly traps, and seal food bins tightly at all times.',
-    guidanceHi: 'मक्खियों को दूर रखने के लिए जालीदार पर्दे और एयर-टाइट डिब्बों का उपयोग करें।',
+    questionHi: 'क्या मक्खियों, मच्छरों और कीटों को भोजन के संपर्क में आने से रोका जाता है?',
+    guidanceEn: 'Use mesh nets, insect screens, and seal food storage containers tightly at all times.',
+    guidanceHi: 'मक्खियों को दूर रखने के लिए जालीदार ढक्कन और एयर-टाइट डिब्बों का उपयोग करें।',
     category: 'storage_pest',
     weight: 10
   }
@@ -115,8 +115,8 @@ export const IMPROVEMENT_CATALOGUE: ImprovementItem[] = [
     impact: 'High',
     description: 'High-durability wire mesh domes to keep hot fried foods, snacks, and sweets covered while allowing steam ventilation.',
     descriptionHi: 'गर्म नाश्ते और पके भोजन को मक्खियों और धूल से सुरक्षित रखने के लिए जालीदार ढक्कन।',
-    vendorBenefit: 'Stops flies and dust instantly. High customer visual trust.',
-    vendorBenefitHi: 'मक्खियों और धूल से तुरंत बचाव। ग्राहकों का भरोसा बढ़ता है।',
+    vendorBenefit: 'Helps protect food from insects and airborne dust.',
+    vendorBenefitHi: 'मक्खियों और धूल से बचाव में सहायक।',
     targetQuestionIds: [1, 10],
     practicalTip: 'Wipe mesh weekly with warm water and detergent.',
     practicalTipHi: 'हफ्ते में एक बार गर्म पानी से जाली साफ करें।',
@@ -125,16 +125,16 @@ export const IMPROVEMENT_CATALOGUE: ImprovementItem[] = [
   {
     id: 'handwash-dispenser-kit',
     name: 'Handwash Dispenser + Antibacterial Liquid Soap (500ml)',
-    nameHi: 'हैंडवॉश डिस्पेंसर + एंटीबैक्टीरियल लिक्विड सोप (500ml)',
+    nameHi: 'हैंडवॉश डिस्पेंसर + लिक्विड सोप (500ml)',
     category: 'personal_hygiene',
     categoryLabel: 'Personal Hygiene',
     categoryLabelHi: 'व्यक्तिगत स्वच्छता',
     cost: 95,
     impact: 'High',
-    description: 'Refillable pump dispenser paired with hygiene liquid soap for quick vendor and staff hand sanitation.',
+    description: 'Refillable pump dispenser paired with liquid soap for quick vendor and staff hand washing.',
     descriptionHi: 'रिफिलेबल पंप डिस्पेंसर और साबुन जिससे पैसे लेने के बाद तुरंत हाथ धोए जा सकें।',
-    vendorBenefit: 'Cuts human-to-food bacterial transfer by up to 90%.',
-    vendorBenefitHi: 'हाथों से भोजन में बैक्टीरिया फैलने का खतरा 90% कम होता है।',
+    vendorBenefit: 'Supports basic routine hand hygiene at minimal cost.',
+    vendorBenefitHi: 'कम लागत में बुनियादी हाथ स्वच्छता बनाए रखने में सहायक।',
     targetQuestionIds: [7],
     practicalTip: 'Place next to your water container for effortless routine use.',
     practicalTipHi: 'पानी के कंटेनर के ठीक पास रखें ताकि हाथ धोना आसान हो।',
@@ -151,11 +151,11 @@ export const IMPROVEMENT_CATALOGUE: ImprovementItem[] = [
     impact: 'High',
     description: 'Pedal-operated lidded dustbin so hands never touch the trash lid while discarding food scraps.',
     descriptionHi: 'पैडल से खुलने वाला ढक्कनदार डस्टबिन ताकि कचरा फेंकते समय हाथ गंदे न हों।',
-    vendorBenefit: 'Eliminates bin lid contact contamination; keeps stray dogs/flies away.',
-    vendorBenefitHi: 'ढक्कन छूने की जरूरत नहीं, बदबू और मक्खियों से बचाव।',
+    vendorBenefit: 'Prevents direct hand contact with trash lids.',
+    vendorBenefitHi: 'ढक्कन छूने की आवश्यकता नहीं होती।',
     targetQuestionIds: [5],
-    practicalTip: 'Line with biodegradable bin liner and empty at least twice daily.',
-    practicalTipHi: 'अंदर थैली लगाएं और दिन में दो बार खाली करें।',
+    practicalTip: 'Line with a bin bag and empty regularly throughout the day.',
+    practicalTipHi: 'अंदर थैली लगाएं और नियमित रूप से खाली करें।',
     iconName: 'Trash2'
   },
   {
@@ -169,11 +169,11 @@ export const IMPROVEMENT_CATALOGUE: ImprovementItem[] = [
     impact: 'Medium',
     description: 'BPA-free snap-lock containers for sliced onions, prepared garnishes, paneer, and raw spices.',
     descriptionHi: 'कटी सब्जियों, मसालों और पनीर को सुरक्षित और ताजा रखने के लिए लॉक वाले पारदर्शी डिब्बे।',
-    vendorBenefit: 'Keeps ingredients fresh for 2x longer, zero pest infiltration.',
-    vendorBenefitHi: 'सामग्री दोगुनी देर तक ताजी रहती है, नमी और कीड़ों से सुरक्षा।',
+    vendorBenefit: 'Keeps ingredients protected from humidity and pests.',
+    vendorBenefitHi: 'सामग्री को नमी और कीटों से सुरक्षित रखता है।',
     targetQuestionIds: [3, 9, 10],
-    practicalTip: 'Label containers with prep date for inventory rotation.',
-    practicalTipHi: 'डिब्बों पर तारीख लिखकर पहले बनी सामग्री पहले इस्तेमाल करें।',
+    practicalTip: 'Use first-in, first-out practice for ingredient freshness.',
+    practicalTipHi: 'पहले बनी सामग्री पहले इस्तेमाल करें।',
     iconName: 'Box'
   },
   {
@@ -185,10 +185,10 @@ export const IMPROVEMENT_CATALOGUE: ImprovementItem[] = [
     categoryLabelHi: 'खाद्य सुरक्षा एवं ढकना',
     cost: 160,
     impact: 'High',
-    description: 'Separate green tongs for ready-to-eat salads and red tongs for raw fillings or meat.',
-    descriptionHi: 'सलाद और पके खाने के लिए हरा चिमटा तथा कच्ची सामग्री के लिए अलग चिमटा।',
-    vendorBenefit: 'Eliminates cross-contamination between raw ingredients and cooked meals.',
-    vendorBenefitHi: 'कच्चे और पके भोजन में बैक्टीरिया मिलने से रोकता है।',
+    description: 'Separate green tongs for ready-to-eat items and red tongs for raw fillings.',
+    descriptionHi: 'पके खाने के लिए हरा चिमटा तथा कच्ची सामग्री के लिए अलग चिमटा।',
+    vendorBenefit: 'Helps prevent cross-contamination between raw and cooked items.',
+    vendorBenefitHi: 'कच्चे और पके भोजन में संपर्क रोकने में सहायक।',
     targetQuestionIds: [3, 4],
     practicalTip: 'Hang tongs on hooks rather than resting them directly on tables.',
     practicalTipHi: 'चिमटों को मेज पर रखने की बजाय हुक पर टांगें।',
@@ -205,11 +205,11 @@ export const IMPROVEMENT_CATALOGUE: ImprovementItem[] = [
     impact: 'High',
     description: 'Dedicated enclosed container with spigot tap for clean hand-washing and utensil rinsing.',
     descriptionHi: 'नल लगा हुआ बंद पानी का जार जिससे बिना हाथ डुबोए साफ पानी निकाला जा सके।',
-    vendorBenefit: 'Prevents dipping dirty hands or mugs into the common water storage.',
-    vendorBenefitHi: 'पानी में गंदे हाथ या मग डालने से होने वाली गंदगी रुकती है।',
+    vendorBenefit: 'Avoids dipping hands or dirty mugs into the water reservoir.',
+    vendorBenefitHi: 'पानी में हाथ या मग डुबोने से बचाव होता है।',
     targetQuestionIds: [2, 4],
-    practicalTip: 'Scrub internal jug surface daily and refill only with safe drinking water.',
-    practicalTipHi: 'रोजाना जार को अंदर से धोएं और केवल पीने योग्य पानी भरें।',
+    practicalTip: 'Clean container regularly and refill only with potable water.',
+    practicalTipHi: 'जार को नियमित रूप से धोएं और साफ पानी भरें।',
     iconName: 'Droplet'
   },
   {
@@ -221,12 +221,12 @@ export const IMPROVEMENT_CATALOGUE: ImprovementItem[] = [
     categoryLabelHi: 'पानी एवं स्वच्छता',
     cost: 90,
     impact: 'Medium',
-    description: 'Fast-drying microfiber cloths: Blue for counter surfaces, Yellow for dish drying, Red for floor spills.',
+    description: 'Fast-drying cloths: Blue for counter surfaces, Yellow for dish drying.',
     descriptionHi: 'जल्दी सूखने वाले माइक्रोफाइबर कपड़े - मेज पोंछने और बर्तन सुखाने के लिए अलग कपड़े।',
-    vendorBenefit: 'Stops transfer of grime from tables onto customer plates.',
-    vendorBenefitHi: 'एक ही गंदे कपड़े से मेज और प्लेट पोंछने की आदत खत्म होती है।',
+    vendorBenefit: 'Separates surface cleaning cloths from dish drying towels.',
+    vendorBenefitHi: 'काउंटर और बर्तन पोंछने के कपड़े अलग रहते हैं।',
     targetQuestionIds: [4, 6, 8],
-    practicalTip: 'Soak in hot soapy water at the end of each shift.',
+    practicalTip: 'Wash with warm soapy water at the end of each working day.',
     practicalTipHi: 'दिन के अंत में गर्म साबुन के पानी में धोकर सुखाएं।',
     iconName: 'Sparkles'
   },
@@ -239,12 +239,12 @@ export const IMPROVEMENT_CATALOGUE: ImprovementItem[] = [
     categoryLabelHi: 'भंडारण एवं कीट नियंत्रण',
     cost: 290,
     impact: 'High',
-    description: 'Portable thermal cooler bag to keep mint chutney, curd, and milk chilled below 8°C even during hot afternoons.',
+    description: 'Portable cooler bag to keep perishable chutneys and curd cool during hot daytime hours.',
     descriptionHi: 'गर्मी के मौसम में हरी चटनी, दही और दूध को ठंडा रखने के लिए इंसुलेटेड बैग।',
-    vendorBenefit: 'Prevents chutney souring and curd spoilage on hot street carts.',
-    vendorBenefitHi: 'गर्मी में चटनी खट्टी होने और दही खराब होने से बचाता है।',
+    vendorBenefit: 'Helps keep temperature-sensitive toppings cool without electricity.',
+    vendorBenefitHi: 'बिना बिजली के चटनी और दही को ठंडा रखने में मददगार।',
     targetQuestionIds: [9],
-    practicalTip: 'Freeze gel ice packs overnight in home freezer.',
+    practicalTip: 'Freeze gel packs overnight before placing in the cooler bag.',
     practicalTipHi: 'जेल पैक को रात में फ्रीजर में जमाकर सुबह बैग में रखें।',
     iconName: 'ThermometerSnowflake'
   },
@@ -257,13 +257,13 @@ export const IMPROVEMENT_CATALOGUE: ImprovementItem[] = [
     categoryLabelHi: 'व्यक्तिगत स्वच्छता',
     cost: 110,
     impact: 'Medium',
-    description: 'Professional vendor apparel that prevents stray hair from falling into food while cooking or packaging.',
+    description: 'Practical food handler apparel to prevent loose hair from falling into food items.',
     descriptionHi: 'भोजन बनाते समय बालों को खाने में गिरने से रोकने के लिए एप्रन और सिर की जाली।',
-    vendorBenefit: '100% hair-fall prevention and pristine professional stall appearance.',
-    vendorBenefitHi: 'खाने में बाल गिरने की शिकायत खत्म और स्टॉल का पेशेवर रूप।',
+    vendorBenefit: 'Helps prevent stray hair from falling into food preparations.',
+    vendorBenefitHi: 'खाने में बाल गिरने की संभावना कम करता है।',
     targetQuestionIds: [7],
-    practicalTip: 'Wash apron daily after stall closure.',
-    practicalTipHi: 'दुकान बंद करने के बाद एप्रन को रोजाना धोएं।',
+    practicalTip: 'Wash apron regularly after daily stall closure.',
+    practicalTipHi: 'दुकान बंद करने के बाद एप्रन को नियमित रूप से धोएं।',
     iconName: 'UserCheck'
   },
   {
@@ -275,13 +275,13 @@ export const IMPROVEMENT_CATALOGUE: ImprovementItem[] = [
     categoryLabelHi: 'भंडारण एवं कीट नियंत्रण',
     cost: 175,
     impact: 'Medium',
-    description: 'Quick-attach mesh curtain with weighted bottom to shield front display cases and open ingredient shelves.',
+    description: 'Protective mesh curtain to shield front display cases and ingredient shelves from dust and flies.',
     descriptionHi: 'स्टॉल के काउंटर या खिड़की पर लगाने के लिए जाली जिससे धूल और कीड़े अंदर न आएं।',
-    vendorBenefit: 'Keeps airborne dust and flies out while allowing breeze.',
-    vendorBenefitHi: 'हवा आने देता है पर धूल और मक्खियों को बाहर रखता है।',
+    vendorBenefit: 'Provides a barrier against airborne dust and flies.',
+    vendorBenefitHi: 'धूल और मक्खियों को बाहर रखने में सहायक।',
     targetQuestionIds: [1, 10],
-    practicalTip: 'Fix with velcro strips to stall wooden or metal frame.',
-    practicalTipHi: 'वेल्क्रो पट्टी से स्टॉल के फ्रेम पर आसानी से लगाएं।',
+    practicalTip: 'Secure firmly to the stall frame with velcro or hooks.',
+    practicalTipHi: 'स्टॉल के फ्रेम पर वेल्क्रो या हुक से लगाएं।',
     iconName: 'ShieldAlert'
   }
 ];
@@ -289,128 +289,127 @@ export const IMPROVEMENT_CATALOGUE: ImprovementItem[] = [
 export const KNOWLEDGE_BASE: KnowledgeItem[] = [
   {
     id: 'who-5-keys',
-    title: 'WHO Five Keys to Safer Food (Global Hygiene Standard)',
+    title: 'WHO Five Keys to Safer Food (Global Public Hygiene Manual)',
     titleHi: 'WHO सुरक्षित भोजन की 5 बुनियादी कुंजियाँ',
     category: 'Core Hygiene Principles',
     categoryHi: 'मुख्य स्वच्छता सिद्धांत',
     keywords: ['who', '5 keys', 'basic', 'hygiene', 'temperature', 'cooking', 'storage', 'safe food'],
-    summary: 'The five core pillars established by the World Health Organization to prevent foodborne illness.',
-    summaryHi: 'विश्व स्वास्थ्य संगठन द्वारा खाद्य जनित बीमारियों को रोकने के लिए 5 मुख्य नियम।',
-    content: `The World Health Organization (WHO) outlines 5 fundamental practices for safe food preparation:
-1. **Keep Clean**: Wash hands before handling food and frequently during preparation. Sanitize all surfaces and equipment.
+    summary: 'The five core pillars established by the World Health Organization to prevent foodborne contamination.',
+    summaryHi: 'विश्व स्वास्थ्य संगठन द्वारा खाद्य जनित संदूषण को रोकने के लिए 5 मुख्य नियम।',
+    content: `The World Health Organization (WHO) outlines 5 fundamental practices for safe food handling:
+1. **Keep Clean**: Wash hands before handling food and frequently during preparation. Sanitize preparation surfaces and utensils.
 2. **Separate Raw and Cooked**: Separate raw meat, poultry, and seafood from ready-to-eat foods. Use dedicated knives and cutting boards.
-3. **Cook Thoroughly**: Cook foods thoroughly, especially meat, poultry, eggs, and seafood (core temperature >70°C). Reheat cooked food thoroughly.
-4. **Keep Food at Safe Temperatures**: Do not leave cooked food at room temperature for more than 2 hours. Refrigerate perishable food promptly below 5°C. Keep hot food steaming (>60°C).
-5. **Use Safe Water and Raw Materials**: Use potable water, select fresh wholesome foods, choose pasteurized milk, and wash fruits/vegetables thoroughly.`,
+3. **Cook Thoroughly**: Cook foods thoroughly, especially meat, poultry, eggs, and seafood (ensure steaming core temperature).
+4. **Keep Food at Safe Temperatures**: Do not leave cooked food at ambient room temperature for more than 2 hours. Refrigerate perishable food promptly below 5°C. Keep hot food hot (>60°C).
+5. **Use Safe Water and Raw Materials**: Use potable water, select fresh wholesome ingredients, and wash raw vegetables thoroughly.`,
     contentHi: `विश्व स्वास्थ्य संगठन (WHO) के अनुसार सुरक्षित भोजन के 5 बुनियादी नियम:
-1. **स्वच्छता रखें**: खाना छूने से पहले और बनाते समय बार-बार हाथ धोएं। सभी बर्तनों और काउंटर को साफ रखें।
+1. **स्वच्छता रखें**: खाना छूने से पहले और बनाते समय बार-बार हाथ धोएं।
 2. **कच्चे और पके भोजन को अलग रखें**: कच्ची सामग्री और तैयार भोजन के लिए अलग चाकू और बोर्ड का उपयोग करें।
-3. **अच्छी तरह पकाएं**: भोजन को उचित तापमान (70°C से ऊपर) पर पूरी तरह पकाएं।
+3. **अच्छी तरह पकाएं**: भोजन को उचित तापमान पर पूरी तरह पकाएं।
 4. **सुरक्षित तापमान पर रखें**: पके भोजन को 2 घंटे से अधिक सामान्य तापमान पर न छोड़ें। ठंडी चीजें 5°C से नीचे और गर्म चीजें 60°C से ऊपर रखें।
 5. **सुरक्षित पानी और कच्चा माल प्रयोग करें**: केवल साफ पीने योग्य पानी और ताजी सामग्री का उपयोग करें।`,
     sourceTitle: 'WHO Five Keys to Safer Food Manual',
+    sourceOrganization: 'World Health Organization (WHO)',
     sourceUrl: 'https://www.who.int/activities/promoting-safe-food-handling',
-    sourceType: 'WHO Guideline'
+    sourceType: 'WHO Public Hygiene Manual'
   },
   {
     id: 'swollen-packaging-risk',
-    title: 'Understanding Bloated / Swollen Food Packaging',
-    titleHi: 'फूले हुए या सूजे हुए फूड पैकेट का जोखिम',
+    title: 'Public Guidance on Bulging or Swollen Packaged Food Containers',
+    titleHi: 'फूले हुए या क्षतिग्रस्त पैकेज्ड फूड पर सार्वजनिक मार्गदर्शन',
     category: 'Packaging & Spoilage',
     categoryHi: 'पैकेजिंग एवं खराबी',
-    keywords: ['swollen', 'bloated', 'packet', 'juice', 'tetrapack', 'gas', 'botulism', 'can', 'pouched', 'sour'],
-    summary: 'Why sealed food containers bulge and why consuming them poses severe health hazards.',
-    summaryHi: 'सील पैक डिब्बे या टेट्रापैक क्यों फूलते हैं और उन्हें खाना क्यों खतरनाक है।',
-    content: `When a sealed food pouch, can, or juice carton is swollen or bulged:
-- **Cause**: Microorganisms (bacteria or yeasts) inside the package have fermented sugars or decomposed organic matter, generating carbon dioxide and gases. In airtight low-acid conditions, anaerobic spore-formers like *Clostridium botulinum* or gas-producing spoilage organisms can proliferate.
-- **Risk**: Ingestion can cause acute gastrointestinal poisoning, severe emesis, or life-threatening neurotoxin absorption (Botulism).
-- **Safety Action**:
-  1. Never taste or consume swollen packaged goods.
-  2. Do not puncture or squeeze the package.
-  3. Store safely away from children and pets.
-  4. Photograph the batch code and alert the seller.`,
-    contentHi: `जब कोई सीलबंद जूस, पैकेट या डिब्बा फूला हुआ दिखाई दे:
-- **कारण**: अंदर मौजूद बैक्टीरिया या फंगस सामग्री को सड़ाकर गैस (CO2) पैदा करते हैं।
-- **खतरा**: इसे पीने या खाने से गंभीर फूड पॉइजनिंग, उल्टी और आंतों का गंभीर संक्रमण हो सकता है।
-- **सुरक्षा उपाय**:
-  1. कभी भी ऐसे फूले पैकेट का स्वाद न चखें।
+    keywords: ['swollen', 'bloated', 'packet', 'juice', 'tetrapack', 'gas', 'can', 'pouched', 'sour', 'bulging'],
+    summary: 'Guidance on identifying swollen or damaged packaging and safe consumer handling steps.',
+    summaryHi: 'फूले या क्षतिग्रस्त पैकेटों की पहचान और उपभोक्ता सुरक्षा के बुनियादी कदम।',
+    content: `When a sealed food pouch, tetrapack, or can is noticeably swollen or bulging:
+- **Observation**: Bulging typically indicates that packaging seal integrity has been compromised or internal gas formation has occurred due to product spoilage.
+- **Limitation**: This educational prototype cannot confirm the actual biological agent or determine contamination without laboratory testing.
+- **Public Safety Recommendation**:
+  1. Do not taste or consume food from swollen, bulging, or severely damaged packaging.
+  2. Do not puncture or squeeze the container.
+  3. Keep the package safely away from children and pets.
+  4. Retain batch/lot numbers and notify the retail vendor or store management.`,
+    contentHi: `जब कोई सीलबंद पैकेट, टेट्रापैक या डिब्बा फूला हुआ दिखाई दे:
+- **अवलोकन**: फूला हुआ पैकेट सील खराब होने या उत्पाद में खराबी के कारण गैस बनने का संकेत हो सकता है।
+- **सीमा**: यह प्रोटोटाइप प्रयोगशाला परीक्षण के बिना वास्तविक कारण निर्धारित नहीं कर सकता।
+- **सुरक्षा सलाह**:
+  1. ऐसे फूले पैकेट का स्वाद कभी न चखें।
   2. पैकेट को दबाएं या फाड़ें नहीं।
-  3. बैच नंबर की फोटो लें और दुकानदार को सूचित करें।`,
-    sourceTitle: 'FAO / WHO Food Safety Risk Assessment Technical Paper',
-    sourceUrl: 'https://www.fao.org/food-safety/scientific-advice/risk-assessment-and-management/en/',
-    sourceType: 'Consumer Safety Codex'
+  3. बैच नंबर सुरक्षित रखें और दुकानदार को सूचित करें।`,
+    sourceTitle: 'Food Safety and Quality Guidelines for Consumers',
+    sourceOrganization: 'Food and Agriculture Organization (FAO) & World Health Organization (WHO)',
+    sourceUrl: 'https://www.who.int/news-room/fact-sheets/detail/food-safety',
+    sourceType: 'Public Food Safety Factsheet'
   },
   {
     id: 'street-food-hygiene',
-    title: 'Essential Hygiene Practices for Small Food Vendors & Stalls',
-    titleHi: 'छोटे फ़ूड स्टॉल और ठेलों के लिए आवश्यक स्वच्छता नियम',
+    title: 'Codex General Principles for Street-Vended Foods (CXC 43-1997)',
+    titleHi: 'स्ट्रीट-वेंडिंग खाद्य स्वच्छता के लिए कोडेक्स सिद्धांत',
     category: 'Vendor Hygiene',
     categoryHi: 'विक्रेता स्वच्छता',
     keywords: ['stall', 'vendor', 'cart', 'street food', 'small shop', 'water', 'gloves', 'apron', 'hygiene'],
-    summary: 'Practical, low-cost steps for informal food stalls to prevent contamination.',
-    summaryHi: 'छोटे ढाबों और ठेलों पर भोजन को स्वच्छ रखने के कम लागत वाले उपाय।',
-    content: `Small food stalls can dramatically enhance safety with simple daily workflows:
-1. **Hand Hygiene**: Wash hands with soap after handling currency or cleaning waste.
-2. **Covered Stalls**: Keep all fried snacks, chopped garnishes, and sauces under clean wire mesh or glass covers.
-3. **Potable Water Management**: Do not dip hands into water containers; use jugs with dispensing taps.
-4. **Waste Segregation**: Keep pedal-operated bins away from cooking areas. Empty frequently.
-5. **Temperature Control**: Keep chutneys and milk products on ice beds during summer peak heat.`,
-    contentHi: `छोटे स्ट्रीट वेंडर इन सरल तरीकों से स्टॉल की स्वच्छता बढ़ा सकते हैं:
-1. **हाथों की सफाई**: पैसे लेने या सफाई के बाद साबुन से हाथ धोएं।
-2. **भोजन ढक कर रखें**: समोसे, कटी सब्जियां और चटनी हमेशा जाली या शीशे से ढकें।
-3. **पानी का सही प्रयोग**: पानी के ड्रम में हाथ न डुबोएं, नल वाले जार का प्रयोग करें।
+    summary: 'Public hygiene recommendations for informal and small-scale food preparation stalls.',
+    summaryHi: 'छोटे ढाबों और ठेलों पर भोजन को स्वच्छ रखने के अंतरराष्ट्रीय दिशानिर्देश।',
+    content: `The Codex Alimentarius Regional Code of Hygienic Practice for Street-Vended Foods outlines essential basic steps:
+1. **Hand Washing**: Wash hands with clean water and soap before handling food and after handling money or waste.
+2. **Covering Food**: Keep prepared items, cooked dishes, and sliced garnishes covered with clean screens, lids, or glass sneeze guards.
+3. **Potable Water**: Use clean potable water for cooking, cleaning, and beverage preparation; store in clean covered containers with dispensing taps.
+4. **Waste Disposal**: Keep covered, hands-free waste bins at a distance from food preparation surfaces.
+5. **Cold Storage for Perishables**: Keep perishable toppings and dairy cool with ice beds or insulation during warm weather.`,
+    contentHi: `स्ट्रीट-वेंडिंग खाद्य स्वच्छता के मुख्य दिशानिर्देश:
+1. **हाथों की सफाई**: पैसे लेने या सफाई के बाद साबुन और पानी से हाथ धोएं।
+2. **भोजन ढक कर रखें**: पके भोजन और कटी सब्जियों को हमेशा साफ जाली या ढक्कन से ढकें।
+3. **साफ पानी**: खाना बनाने और बर्तन धोने के लिए साफ पानी का उपयोग करें।
 4. **कूड़ा प्रबंधन**: चूल्हे से दूर ढक्कनदार कूड़ेदान रखें।
-5. **चटनी को ठंडा रखें**: गर्मी में हरी चटनी और दही को बर्फ पर रखें ताकि वह खट्टी न हो।`,
+5. **ठंडा भंडारण**: गर्मी में चटनी और दूध उत्पादों को बर्फ पर रखें।`,
     sourceTitle: 'Codex Alimentarius Code of Hygienic Practice for Street-Vended Foods (CXC 43-1997)',
+    sourceOrganization: 'FAO / WHO Codex Alimentarius Commission',
     sourceUrl: 'https://www.fao.org/fao-who-codexalimentarius/codex-texts/codes-of-practice/en/',
-    sourceType: 'Street Food Best Practices'
+    sourceType: 'International Food Standard'
   },
   {
     id: 'adulteration-detection',
-    title: 'Recognizing Common Food Adulterants & Synthetic Dyes',
-    titleHi: 'खाद्य पदार्थों में मिलावट और हानिकारक रंगों की पहचान',
+    title: 'Recognizing Unsafe Food Additives and Synthetic Dye Indicators',
+    titleHi: 'खाद्य मिलावट और असुरक्षित रासायनिक रंगों के संकेतक',
     category: 'Food Adulteration',
     categoryHi: 'खाद्य मिलावट',
     keywords: ['adulteration', 'color', 'synthetic', 'milk', 'turmeric', 'oil', 'malachite green', 'dye', 'chemical'],
-    summary: 'Common household indicators and risks of adulterated food ingredients.',
-    summaryHi: 'दैनिक खाद्य पदार्थों में मिलावट के लक्षण और बचाव के तरीके।',
-    content: `Adulteration involves unauthorized mixing of inferior or harmful substances into food:
-- **Synthetic Colors**: Excessively neon-yellow jalebis or bright emerald green peas often indicate non-permitted industrial dyes (e.g., Metanil Yellow or Malachite Green).
-- **Synthetic Milk**: Frothy milk leaving white soap-like residue or chemical smell when boiled indicates detergent or urea adulteration.
-- **Cooking Oils**: Turbid or foul-smelling loose oil often indicates non-edible mineral oil blending.
-- **Guidance**: Avoid unbranded open spices and artificially bright street sweets. Report questionable batches immediately.`,
-    contentHi: `खाद्य मिलावट और नकली रंगों की पहचान:
-- **नकली रंग**: अत्यधिक चमकीली पीली जलेबी या बहुत हरी मटर में हानिकारक रासायनिक डाई हो सकती है।
-- **सिंथेटिक दूध**: उबालने पर झागदार या साबुन जैसी बदबू आना डिटर्जेंट या यूरिया मिलावट का संकेत हो सकता है।
-- **खुला तेल**: अत्यधिक गाढ़ा या बदबूदार खुला तेल मिलावटी हो सकता है।
-- **सलाह**: अत्यधिक चमकीले खाद्य पदार्थों से बचें और हमेशा सीलबंद सामान चुनें।`,
-    sourceTitle: 'Public Food Quality Guidance & Safety Benchmarks',
+    summary: 'General public observations and precautions regarding unauthorized additives in foods.',
+    summaryHi: 'दैनिक खाद्य पदार्थों में मिलावट के सामान्य लक्षण और एहतियाती कदम।',
+    content: `Food adulteration involves unauthorized addition of non-food-grade or inferior substances:
+- **Synthetic Colors**: Unnaturally bright or fluorescent colors (such as neon yellows or intense greens) may indicate non-permitted industrial dyes.
+- **Physical/Chemical Checks**: Laboratory chemical testing is required for definitive confirmation of adulteration.
+- **Consumer Precaution**: Avoid consuming items with abnormal chemical odors, synthetic staining, or questionable texture. Report suspected batches to store managers.`,
+    contentHi: `खाद्य मिलावट और अप्राकृतिक रंगों के संबंध में जानकारी:
+- **अप्राकृतिक रंग**: अत्यधिक चमकीले या फ्लोरोसेंट रंग हानिकारक रासायनिक डाई का संकेत हो सकते हैं।
+- **पुष्टि**: मिलावट की पुष्टि केवल अधिकृत प्रयोगशाला परीक्षण से ही संभव है।
+- **सलाह**: रासायनिक गंध या असामान्य रंग वाले खाद्य पदार्थों के सेवन से बचें।`,
+    sourceTitle: 'WHO Food Safety Guidelines: Chemical Hazards & Contaminants',
+    sourceOrganization: 'World Health Organization (WHO)',
     sourceUrl: 'https://www.who.int/news-room/fact-sheets/detail/food-safety',
-    sourceType: 'Food Safety Standard'
+    sourceType: 'Public Health Factsheet'
   },
   {
     id: 'food-storage-temperatures',
-    title: 'Safe Food Storage Temperatures & The "Danger Zone"',
-    titleHi: 'खाद्य भंडारण तापमान और "खतरे का क्षेत्र" (Danger Zone)',
+    title: 'Food Storage Temperature Safety & The 5°C - 60°C Temperature Range',
+    titleHi: 'खाद्य भंडारण तापमान और 5°C - 60°C तापमान सीमा',
     category: 'Storage & Temperature',
     categoryHi: 'भंडारण एवं तापमान',
     keywords: ['temperature', 'danger zone', 'refrigerator', 'storage', 'spoilage', 'chutney', 'dairy', 'bacteria'],
-    summary: 'Why temperatures between 5°C and 60°C trigger rapid bacterial multiplication.',
-    summaryHi: '5°C से 60°C के बीच बैक्टीरिया तेजी से क्यों बढ़ते हैं और इससे कैसे बचें।',
-    content: `The Temperature **Danger Zone** is between 5°C and 60°C (41°F - 140°F):
-- In this temperature range, food poisoning bacteria can double in number every 20 minutes.
-- **Rule of Thumb**:
-  - Keep cold food **Cold** (under 5°C).
-  - Keep hot food **Hot** (above 60°C).
-  - Discard high-risk perishables (cooked rice, gravies, dairy, cut melon) left at room temperature for over 2 hours.`,
-    contentHi: `तापमान का **खतरे का क्षेत्र (Danger Zone)** 5°C से 60°C के बीच होता है:
-- इस तापमान में बैक्टीरिया हर 20 मिनट में दोगुने हो जाते हैं।
-- **मुख्य नियम**:
-  - ठंडी चीजों को 5°C से नीचे रखें।
-  - गर्म भोजन को 60°C से ऊपर भाप निकलता रखें।
-  - पके हुए चावल, दाल या पनीर को 2 घंटे से अधिक खुले में न छोड़ें।`,
-    sourceTitle: 'WHO Food Safety Guidelines: Temperature Control',
+    summary: 'Public guidance on safe hot and cold holding temperatures for perishable foods.',
+    summaryHi: 'जल्दी खराब होने वाले खाद्य पदार्थों के लिए ठंडे और गर्म तापमान के सुरक्षा नियम।',
+    content: `Perishable foods left at ambient temperatures between 5°C and 60°C (41°F - 140°F) are vulnerable to rapid quality deterioration:
+- **Cold Foods**: Store perishable items (dairy, chutneys, cooked gravies) below 5°C.
+- **Hot Foods**: Maintain cooked hot foods above 60°C before serving.
+- **Time Limit**: Discard perishable cooked food left at ambient room temperature for more than 2 hours.`,
+    contentHi: `5°C से 60°C के बीच का तापमान खाद्य गुणवत्ता को तेजी से प्रभावित करता है:
+- **ठंडा भोजन**: जल्दी खराब होने वाली चीजें 5°C से नीचे रखें।
+- **गर्म भोजन**: परोसने से पहले पके हुए भोजन को 60°C से ऊपर गर्म रखें।
+- **समय सीमा**: कमरे के सामान्य तापमान पर 2 घंटे से अधिक खुले रखे पके भोजन का सेवन न करें।`,
+    sourceTitle: 'WHO Food Safety Guidelines: Temperature Control for Food Handlers',
+    sourceOrganization: 'World Health Organization (WHO)',
     sourceUrl: 'https://www.who.int/activities/promoting-safe-food-handling',
-    sourceType: 'WHO Guideline'
+    sourceType: 'WHO Public Hygiene Manual'
   }
 ];

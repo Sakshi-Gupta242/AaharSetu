@@ -84,6 +84,7 @@ export interface KnowledgeItem {
   content: string;
   contentHi: string;
   sourceTitle: string;
+  sourceOrganization: string;
   sourceUrl: string;
   sourceType: string;
 }
@@ -95,6 +96,7 @@ export interface ChatMessage {
   timestamp: string;
   sources?: Array<{
     title: string;
+    organization?: string;
     url: string;
     type: string;
   }>;

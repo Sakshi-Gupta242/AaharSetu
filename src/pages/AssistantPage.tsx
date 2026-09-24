@@ -28,8 +28,8 @@ const SAMPLE_QUESTIONS = [
     hi: 'एक छोटा स्ट्रीट फ़ूड स्टॉल कम खर्च में स्वच्छता कैसे सुधार सकता है?'
   },
   {
-    en: 'How to detect synthetic food adulteration and bright chemical dyes?',
-    hi: 'खाने में मिलावट और हानिकारक रासायनिक रंगों की पहचान कैसे करें?'
+    en: 'How to recognize unsafe food additives and dyes?',
+    hi: 'असुरक्षित खाद्य मिलावट और रासायनिक रंगों की पहचान कैसे करें?'
   }
 ];
 
@@ -43,19 +43,21 @@ export const AssistantPage: React.FC = () => {
       sender: 'assistant',
       text:
         language === 'hi'
-          ? 'नमस्ते! मैं आहारसेतु का खाद्य सुरक्षा ज्ञान सहायक हूँ। आप मुझसे भोजन भंडारण, स्ट्रीट स्टॉल स्वच्छता, पैकेजिंग खराबी और सुरक्षित खान-पान के बारे में पूछ सकते हैं। मेरे सभी उत्तर WHO और खुले सार्वजनिक सुरक्षा मानकों पर आधारित हैं।'
-          : 'Namaste! I am the AaharSetu Food Safety Knowledge Assistant. You can ask me about safe food storage, stall hygiene practices, swollen packaging risks, or preventing foodborne illness. All answers are grounded with open citations.',
+          ? 'नमस्ते! मैं आहारसेतु का खाद्य सुरक्षा ज्ञान सहायक हूँ (शैक्षणिक प्रोटोटाइप)। आप मुझसे सुरक्षित खाद्य भंडारण, स्ट्रीट स्टॉल स्वच्छता और सामान्य स्वच्छता नियमों के बारे में पूछ सकते हैं। मेरे उत्तर केवल खुले सार्वजनिक संदर्भों (WHO एवं कोडेक्स मानकों) पर आधारित हैं।'
+          : 'Namaste! I am the AaharSetu Food Safety Knowledge Assistant (educational prototype). You can ask me about safe food storage temperatures, stall hygiene practices, or recognizing damaged packaging. All answers are strictly grounded in public references from WHO and Codex Alimentarius.',
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       sources: [
         {
           title: 'WHO Five Keys to Safer Food Manual',
+          organization: 'World Health Organization (WHO)',
           url: 'https://www.who.int/activities/promoting-safe-food-handling',
-          type: 'WHO Guideline'
+          type: 'WHO Public Hygiene Manual'
         },
         {
           title: 'Codex Alimentarius Code of Hygienic Practice (CXC 43-1997)',
+          organization: 'FAO / WHO Codex Alimentarius Commission',
           url: 'https://www.fao.org/fao-who-codexalimentarius/codex-texts/codes-of-practice/en/',
-          type: 'Street Food Best Practices'
+          type: 'International Food Standard'
         }
       ],
       suggestedFollowups: [
@@ -95,6 +97,7 @@ export const AssistantPage: React.FC = () => {
           if (!responseSources.some((s) => s.title === r.sourceTitle)) {
             responseSources.push({
               title: r.sourceTitle,
+              organization: r.sourceOrganization,
               url: r.sourceUrl,
               type: r.sourceType
             });
@@ -103,14 +106,8 @@ export const AssistantPage: React.FC = () => {
       } else {
         responseText =
           language === 'hi'
-            ? `आपके प्रश्न "${q}" के संबंध में मुख्य खाद्य सुरक्षा नियम यह हैं कि भोजन को हमेशा सुरक्षित तापमान (5°C से कम या 60°C से अधिक) पर रखें, स्वच्छ पेयजल का उपयोग करें और पके हुए भोजन को मक्खियों और धूल से पूरी तरह ढक कर रखें। किसी भी संदिग्ध या असामान्य गंध वाले भोजन का सेवन न करें।`
-            : `Regarding your inquiry "${q}", standard food safety guidance emphasizes keeping high-risk perishables outside the 5°C - 60°C danger zone, using potable water, and protecting all ready-to-eat meals under physical covers. Never consume foods showing gas formation or uncharacteristic souring.`;
-
-        responseSources.push({
-          title: 'WHO Food Safety Guidelines: Promoting Safe Handling',
-          url: 'https://www.who.int/activities/promoting-safe-food-handling',
-          type: 'WHO Guideline'
-        });
+            ? 'वर्तमान ज्ञानकोष में प्रासंगिक जानकारी नहीं मिली।'
+            : 'Relevant information was not found in the current knowledge base.';
       }
 
       const assistantMsg: ChatMessage = {
@@ -118,7 +115,7 @@ export const AssistantPage: React.FC = () => {
         sender: 'assistant',
         text: responseText,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        sources: responseSources
+        sources: responseSources.length > 0 ? responseSources : undefined
       };
 
       setMessages((prev) => [...prev, assistantMsg]);
@@ -218,20 +215,24 @@ export const AssistantPage: React.FC = () => {
                     <span className="font-bold text-slate-600 block uppercase tracking-wider text-[10px]">
                       {t('sourcesLabel')}
                     </span>
-                    <div className="space-y-1">
+                    <div className="space-y-1.5">
                       {msg.sources.map((src, i) => (
                         <a
                           key={i}
                           href={src.url}
                           target="_blank"
                           rel="noreferrer"
-                          className="flex items-center gap-1.5 text-emerald-700 hover:text-emerald-900 font-semibold bg-white p-1.5 rounded-lg border border-slate-200 hover:border-emerald-300 transition-colors"
+                          className="flex flex-col gap-0.5 text-emerald-700 hover:text-emerald-900 font-semibold bg-white p-2 rounded-lg border border-slate-200 hover:border-emerald-300 transition-colors"
                         >
-                          <ExternalLink className="w-3 h-3 shrink-0" />
-                          <span className="truncate">{src.title}</span>
-                          <span className="text-[9px] px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded ml-auto shrink-0">
-                            {src.type}
-                          </span>
+                          <div className="flex items-center gap-1.5">
+                            <ExternalLink className="w-3.5 h-3.5 shrink-0 text-emerald-600" />
+                            <span className="truncate text-xs">{src.title}</span>
+                          </div>
+                          {src.organization && (
+                            <span className="text-[10px] text-slate-500 pl-5">
+                              Source: {src.organization}
+                            </span>
+                          )}
                         </a>
                       ))}
                     </div>

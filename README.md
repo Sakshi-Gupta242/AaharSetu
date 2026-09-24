@@ -1,4 +1,4 @@
-# AAHARSETU (आहारसेतु)
+# AaharSetu (आहारसेतु)
 ### *“Safer Food. Smarter Communities.”*
 **Inclusive Food Safety & Community Assistance Platform**
 
@@ -12,7 +12,7 @@
 ---
 
 ## 1. Project Overview
-**AaharSetu** is an independent, community-focused food safety prototype designed to bridge the gap between everyday consumers and small street food vendors. It empowers consumers to report and understand food safety observations (spoilage, adulteration, hygiene lapses) with real-time NLP classification, while equipping micro-vendors and food stalls with a practical 10-point self-assessment tool and low-cost improvement roadmaps (starting from ₹300).
+**AaharSetu** is an independent, community-focused food safety prototype designed to bridge the gap between everyday consumers and small street food vendors. It empowers consumers to report and understand food safety observations (spoilage, adulteration, hygiene lapses) with real-time rule-based NLP classification, while equipping micro-vendors and food stalls with a practical 10-point self-assessment tool and low-cost improvement roadmaps (starting from ₹300).
 
 > **Important Positioning:**
 > *“AaharSetu is an independent student prototype exploring how AI, NLP, information retrieval and data analytics can support food-safety awareness, complaint understanding and practical hygiene improvement.”*
@@ -21,7 +21,7 @@
 ---
 
 ## 2. Problem Statement
-1. **Consumer Ambiguity:** Everyday consumers frequently encounter spoiled packaged goods, unhygienic street stalls, or suspected adulteration, but lack immediate guidance on risk severity, acute danger signs (e.g., botulism risk in bloated cans/tetrapacks), and proper evidence preservation.
+1. **Consumer Ambiguity:** Everyday consumers frequently encounter spoiled packaged goods, unhygienic street stalls, or suspected adulteration, but lack immediate structured guidance on risk severity, observation documentation, and evidence preservation.
 2. **Vendor Economic Hurdles:** Over 10 million informal street vendors in India operate on micro-budgets without access to affordable, structured hygiene education. Generic commercial standards demand expensive equipment rather than practical low-cost interventions.
 3. **Lack of Grounded, Trustworthy Advice:** Online information is often fragmented, overly clinical, or detached from practical street-level realities.
 
@@ -81,7 +81,7 @@ graph TD
 - **Frontend Framework:** React 18.3 (TypeScript) + Vite 6.0
 - **Styling & UI:** Tailwind CSS 3.4, Lucide Icons, Plus Jakarta Sans & Noto Sans Devanagari fonts
 - **Data Visualization:** Recharts (AreaChart, BarChart, PieChart)
-- **Routing:** React Router DOM (HashRouter for bulletproof zero-config SPA deployment)
+- **Routing:** React Router DOM (HashRouter for zero-config SPA deployment)
 - **State & Storage:** React Context API + LocalStorage persistence abstraction with seeded demo datasets
 - **Backend API (Optional):** Python 3.10+ FastAPI, Pydantic, Uvicorn
 
@@ -94,8 +94,8 @@ graph TD
    - Reference ID (e.g. `AS-2025-4921`)
    - Detected Category (e.g. *Spoilage/Expired Food*)
    - Prototype Priority Assessment (*High Priority*)
-   - Acute Risk Factors (e.g. *Anaerobic gas production & botulism risk*)
-   - Actionable Next Steps (e.g. *Do not taste, preserve batch code, notify merchant*)
+   - Observation Summary (e.g. *Possible spoilage or packaging-related food safety concern*)
+   - Actionable Next Steps (e.g. *Do not consume, preserve packaging and batch details, notify merchant*)
 4. User can open and print the clean, styled **Incident Summary Report**.
 
 ---
@@ -116,20 +116,20 @@ The classification engine employs a weighted multi-keyword and pattern-matching 
 - **Contamination:** Detects biological and physical foreign bodies (*insects, flies, glass, plastic, hair*).
 - **Adulteration:** Detects chemical dyes and unauthorized substitutes (*synthetic, neon color, detergent, urea, malachite green*).
 - **Packaging:** Identifies hermetic barrier failures (*broken seal, torn pouch, leaking, dented can*).
-- **Labelling:** Flags compliance gaps (*missing expiry, blank best before, no FSSAI license number*).
+- **Labelling:** Flags compliance gaps (*missing expiry, blank best before, no license number*).
 - **Hygiene & Food Premises:** Analyzes food handling and surrounding environmental sanitation (*dirty hands, open drain, garbage proximity*).
 
-Priority is categorized into **High**, **Medium**, or **Low** based on acute hazard severity indices (e.g., infant vulnerability, anaerobic packaging bulges, toxic chemicals).
+Priority is categorized into **High**, **Medium**, or **Low** based on acute hazard severity indices (e.g., infant vulnerability, packaging bulges, toxic chemicals).
 
 ---
 
 ## 10. Knowledge & Retrieval-Augmented Guidance
 The Food Safety Assistant uses curated, source-grounded references:
-- **WHO Five Keys to Safer Food Manual**
-- **Codex Alimentarius Code of Hygienic Practice for Street-Vended Foods (CXC 43-1997)**
-- **FAO/WHO Food Safety Technical Risk Guidance**
+- **WHO Five Keys to Safer Food Manual** (World Health Organization)
+- **Codex Alimentarius Code of Hygienic Practice for Street-Vended Foods (CXC 43-1997)** (FAO / WHO)
+- **WHO Food Safety Factsheets** (World Health Organization)
 
-Every query produces grounded safety advice accompanied by verified source titles, URLs, and safety badges.
+Every query produces grounded safety advice accompanied by verified source titles, organization names, URLs, and safety badges.
 
 ---
 
@@ -189,6 +189,7 @@ interface VendorCheckResult {
 
 ### Step 1: Clone Repository
 ```bash
+# Note: The remote repository is hosted on GitHub:
 git clone https://github.com/Sakshi-Gupta242/ANPR-Command-Center.git aaharsetu
 cd aaharsetu
 ```

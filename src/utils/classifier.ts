@@ -20,49 +20,49 @@ const CATEGORY_RULES: KeywordRule[] = [
   {
     category: 'Spoilage/Expired Food',
     keywords: ['swollen', 'bloated', 'puffed', 'puffed up', 'bulging', 'foul smell', 'stink', 'sour taste', 'rotten', 'fermented', 'fungus', 'mold', 'green mold', 'white film', 'slimy', 'curdled', 'expired', 'past expiry', 'bad smell'],
-    riskFactor: 'Microbial decomposition / Potential anaerobic gas production (e.g., Clostridium botulinum risk in canned/pouched foods)',
+    riskFactor: 'Possible spoilage or packaging-related food safety concern (loss of seal/fermentation indicator). Note: This prototype cannot determine the actual cause or confirm contamination.',
     weight: 12,
   },
   // Contamination
   {
     category: 'Contamination',
     keywords: ['fly', 'flies', 'cockroach', 'insect', 'worm', 'worms', 'dead insect', 'hair', 'stone', 'sand', 'glass shard', 'plastic piece', 'metal staple', 'stapler pin', 'dust', 'drain', 'sewage'],
-    riskFactor: 'Physical or biological foreign body contamination vector',
+    riskFactor: 'Visible physical or biological foreign matter observed in food handling area.',
     weight: 11,
   },
   // Adulteration
   {
     category: 'Adulteration',
     keywords: ['synthetic', 'artificial color', 'chemical', 'bright yellow', 'bright green', 'malachite green', 'starch', 'detergent', 'urea', 'chalk', 'mineral oil', 'adulterated', 'fake', 'burning plastic', 'wax coating'],
-    riskFactor: 'Chemical adulterant / Non-permitted industrial color toxicity',
+    riskFactor: 'Suspected non-permitted color additive or foreign substance indicator requiring laboratory verification.',
     weight: 11,
   },
   // Packaging
   {
     category: 'Packaging',
     keywords: ['seal broken', 'torn pack', 'punctured', 'leaking packet', 'tampered', 'open pouch', 'dented can', 'rusted tin', 'loose cap', 'foil damaged'],
-    riskFactor: 'Loss of hermetic barrier leading to atmospheric exposure & oxidation',
+    riskFactor: 'Packaging integrity compromise or compromised protective barrier.',
     weight: 9,
   },
   // Labelling
   {
     category: 'Labelling',
     keywords: ['missing expiry', 'no date', 'no best before', 'fssai missing', 'no fssai license', 'no veg non-veg mark', 'no green dot', 'no allergen warning', 'misleading label', 'rubbed off date', 'tampered date', 'reprinted date'],
-    riskFactor: 'Regulatory transparency gap / Undeclared allergen exposure hazard',
+    riskFactor: 'Missing or illegible mandatory packaging label information (e.g. date of manufacture, expiry, or ingredients).',
     weight: 8,
   },
   // Hygiene
   {
     category: 'Hygiene',
     keywords: ['dirty hands', 'unwashed hands', 'no gloves', 'dirty cloth', 'dirty apron', 'coughing', 'sneezing', 'dirty nails', 'bare hands', 'wiped on dirty towel', 'uncovered food', 'unwashed plate', 'dirty water for washing'],
-    riskFactor: 'Direct human-to-food cross-contamination vector (Staphylococcus/Enteric pathogens)',
+    riskFactor: 'Observable hygiene lapse during food preparation, serving, or utensil cleaning.',
     weight: 9,
   },
   // Food Premises
   {
     category: 'Food Premises',
     keywords: ['open drain', 'garbage heap', 'stagnant water', 'dusty road', 'near toilet', 'uncovered dustbin', 'mice', 'rats', 'rodents', 'dirty floor', 'greasy walls', 'waterlogging'],
-    riskFactor: 'Environmental vector breeding / Airborne dust & microbial drift',
+    riskFactor: 'Environmental hygiene concern in vicinity of food preparation area.',
     weight: 8,
   }
 ];
@@ -132,28 +132,27 @@ export function classifyComplaint(description: string, foodName: string = '', us
 
   if (hasHighKeyword || finalCategory === 'Spoilage/Expired Food' || finalCategory === 'Adulteration' || (finalCategory === 'Contamination' && (text.includes('insect') || text.includes('glass') || text.includes('rat')))) {
     priority = 'High';
-    explanation = 'Elevated acute food-safety hazard detected. Microbial toxins (such as anaerobic gas formation in sealed packages), severe foreign contaminant, or synthetic chemical adulterant risk identified.';
-    actions.push('Do not consume or taste the affected item under any circumstances.');
+    explanation = 'Possible spoilage or packaging-related food safety concern. Note: This prototype cannot determine the actual cause, confirm contamination, or provide laboratory analysis.';
+    actions.push('Do not consume or taste the affected item.');
     actions.push('Preserve packaging, batch number, and purchase receipt in a secure bag for evidence.');
-    actions.push('If consumed and experiencing nausea, vomiting or cramps, consult a healthcare professional.');
-    actions.push('Alert the retail merchant or stall vendor immediately to halt further distribution.');
+    actions.push('If feeling unwell after consuming any food, consult a qualified healthcare professional.');
+    actions.push('Notify the vendor or store management regarding the observed condition.');
   } else if (hasMedKeyword || finalCategory === 'Hygiene' || finalCategory === 'Packaging' || finalCategory === 'Food Premises') {
     priority = 'Medium';
-    explanation = 'Moderate hygiene or packaging integrity vulnerability identified. Presents a risk of gradual microbial proliferation or cross-contamination.';
+    explanation = 'Moderate hygiene or packaging integrity vulnerability identified based on submitted description. Note: This prototype cannot determine actual bacterial levels or confirm contamination.';
     actions.push('Refrain from consuming items exposed to open dust or questionable handling.');
-    actions.push('Politely notify the vendor regarding unhygienic practices or broken seals.');
-    actions.push('Document the stall location, date, and time for record keeping.');
-    actions.push('Choose vendors practicing covered storage and clean potable water usage.');
+    actions.push('Politely inform the stall operator regarding clean handling and covering practices.');
+    actions.push('Document the stall location, date, and observation for record keeping.');
   } else {
     priority = 'Low';
-    explanation = 'Informational observation or minor administrative/labeling variance without acute physiological hazard indicators.';
+    explanation = 'Informational observation or minor administrative/labeling variance without acute hazard indicators in the submitted description.';
     actions.push('Verify manufacturing and expiry dates on packaging before purchasing.');
-    actions.push('Check for standard regulatory FSSAI registration numbers on packaged goods.');
+    actions.push('Check for standard product information on packaged goods.');
     actions.push('Share constructive hygiene feedback with the vendor.');
   }
 
   if (detectedRiskFactors.length === 0) {
-    detectedRiskFactors.push('General food quality observation requiring standard hygiene verification');
+    detectedRiskFactors.push('General food observation requiring standard hygiene verification');
   }
 
   return {

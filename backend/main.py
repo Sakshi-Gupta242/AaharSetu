@@ -1,6 +1,7 @@
 """
 AAHARSETU API Backend Server
 "Safer Food. Smarter Communities."
+Inclusive Food Safety & Community Assistance Platform
 Independent Student Prototype exploring AI, NLP, and Food Safety Workflows.
 DISCLAIMER: This is an educational prototype and not an official FSSAI system.
 """
@@ -70,14 +71,14 @@ SEED_COMPLAINTS = [
         "detected_category": "Spoilage/Expired Food",
         "prototype_priority": "High",
         "detected_risk_factors": [
-            "Microbial decomposition / Potential anaerobic gas production (e.g., Clostridium botulinum risk)",
-            "Loss of hermetic seal / packaging fermentation failure"
+            "Possible spoilage or packaging-related food safety concern (loss of seal/fermentation indicator). Note: This prototype cannot determine the actual cause or confirm contamination.",
+            "Compromised hermetic container seal"
         ],
-        "priority_explanation": "Elevated acute food-safety hazard detected. Microbial toxins inside sealed beverage container identified.",
+        "priority_explanation": "Possible spoilage or packaging-related food safety concern. Note: This prototype cannot determine the actual cause, confirm contamination, or provide laboratory analysis.",
         "recommended_actions": [
-            "Do not consume or taste the affected item under any circumstances.",
-            "Preserve packaging, batch number, and purchase receipt in a secure bag for evidence.",
-            "Alert the retail merchant immediately to halt sale of this batch."
+            "Do not consume or taste the affected item.",
+            "Preserve packaging, batch number, and purchase receipt in a secure bag.",
+            "Alert the retail merchant or store management immediately."
         ],
         "disclaimer": "This is an educational prototype and not an official inspection or regulatory decision.",
         "created_at": "2025-05-12T10:15:00Z"
@@ -89,37 +90,37 @@ CATEGORY_RULES = [
     {
         "category": "Spoilage/Expired Food",
         "keywords": ["swollen", "bloated", "puffed", "sour", "rotten", "fermented", "fungus", "mold", "curdled", "expired", "bad smell", "foul smell"],
-        "risk": "Microbial decomposition / Potential anaerobic gas production (e.g., Clostridium botulinum risk)"
+        "risk": "Possible spoilage or packaging-related food safety concern. Note: This prototype cannot determine the actual cause or confirm contamination without laboratory testing."
     },
     {
         "category": "Contamination",
         "keywords": ["fly", "flies", "cockroach", "insect", "worm", "hair", "stone", "glass", "plastic", "metal", "dust"],
-        "risk": "Physical or biological foreign body contamination vector"
+        "risk": "Visible physical or biological foreign matter observed in food handling area."
     },
     {
         "category": "Adulteration",
         "keywords": ["synthetic", "artificial color", "chemical", "bright yellow", "malachite green", "detergent", "urea", "chalk", "adulterated"],
-        "risk": "Chemical adulterant / Non-permitted industrial color toxicity"
+        "risk": "Suspected non-permitted color additive or foreign substance indicator requiring laboratory verification."
     },
     {
         "category": "Packaging",
         "keywords": ["seal broken", "torn", "punctured", "leaking", "tampered", "dented", "rusted"],
-        "risk": "Loss of hermetic barrier leading to atmospheric exposure & oxidation"
+        "risk": "Packaging integrity compromise or compromised protective barrier."
     },
     {
         "category": "Labelling",
         "keywords": ["missing expiry", "no date", "no best before", "fssai missing", "no veg non-veg mark"],
-        "risk": "Regulatory transparency gap / Undeclared allergen exposure hazard"
+        "risk": "Missing or illegible mandatory packaging label information."
     },
     {
         "category": "Hygiene",
         "keywords": ["dirty hands", "unwashed", "no gloves", "dirty cloth", "coughing", "sneezing", "bare hands"],
-        "risk": "Direct human-to-food cross-contamination vector"
+        "risk": "Observable hygiene lapse during food preparation, serving, or utensil cleaning."
     },
     {
         "category": "Food Premises",
         "keywords": ["open drain", "garbage", "stagnant water", "toilet", "uncovered dustbin", "rats", "mice"],
-        "risk": "Environmental vector breeding / Airborne dust & microbial drift"
+        "risk": "Environmental hygiene concern in vicinity of food preparation area."
     }
 ]
 
@@ -146,26 +147,26 @@ def classify_text(text: str, user_cat: Optional[str] = "Auto"):
 
     if is_high:
         priority = "High"
-        exp = "Elevated acute food-safety hazard detected. Microbial decomposition or severe chemical/foreign contaminant risk identified."
+        exp = "Possible spoilage or packaging-related food safety concern. Note: This prototype cannot determine the actual cause, confirm contamination, or provide laboratory analysis."
         actions = [
-            "Do not consume or taste the affected item under any circumstances.",
+            "Do not consume or taste the affected item.",
             "Preserve packaging, batch number, and purchase receipt in a secure bag.",
             "Alert the retail merchant or stall vendor immediately."
         ]
     elif is_med:
         priority = "Medium"
-        exp = "Moderate hygiene or packaging vulnerability identified. Risk of gradual bacterial proliferation or cross-contamination."
+        exp = "Moderate hygiene or packaging vulnerability identified based on submitted description. Note: This prototype cannot determine actual bacterial levels or confirm contamination."
         actions = [
             "Refrain from consuming items exposed to open dust or questionable handling.",
-            "Politely notify the vendor regarding unhygienic practices.",
-            "Document stall location and time for community records."
+            "Politely inform the vendor regarding clean handling practices.",
+            "Document stall location and observation for community records."
         ]
     else:
         priority = "Low"
-        exp = "Informational observation or minor administrative/labeling variance without acute physiological hazard indicators."
+        exp = "Informational observation or minor administrative/labeling variance without acute hazard indicators in the submitted description."
         actions = [
             "Verify manufacturing and expiry dates on packaging before purchase.",
-            "Check for standard regulatory registration numbers on packaged goods.",
+            "Check for standard product information on packaged goods.",
             "Share constructive hygiene feedback with the vendor."
         ]
 
@@ -179,10 +180,10 @@ def classify_text(text: str, user_cat: Optional[str] = "Auto"):
 @app.get("/")
 def root():
     return {
-        "platform": "AAHARSETU",
+        "platform": "AaharSetu",
         "tagline": "Safer Food. Smarter Communities.",
         "description": "Inclusive Food Safety & Community Assistance Platform (Student Prototype)",
-        "disclaimer": "This is an independent educational prototype and not an official FSSAI system.",
+        "disclaimer": "This is an independent educational student prototype and not an official FSSAI system.",
         "status": "operational",
         "endpoints": [
             "/api/health",
@@ -255,18 +256,55 @@ def evaluate_vendor(data: VendorEvaluationInput):
 @app.post("/api/assistant/query")
 def assistant_query(data: AssistantQuery):
     q = data.query.lower()
-    return {
-        "query": data.query,
-        "answer": f"Regarding your food safety question '{data.query}', maintain cold foods below 5°C, keep hot food steaming above 60°C, and ensure ready-to-eat foods remain covered from flies and dust.",
-        "sources": [
-            {
-                "title": "WHO Five Keys to Safer Food Manual",
-                "url": "https://www.who.int/activities/promoting-safe-food-handling",
-                "type": "WHO Guideline"
-            }
-        ],
-        "disclaimer": "Educational knowledge assistant. For acute illness, seek clinical medical evaluation."
-    }
+    if any(k in q for k in ["store", "temperature", "danger", "heat", "cold"]):
+        return {
+            "query": data.query,
+            "answer": "Keep perishable foods below 5°C or steaming hot above 60°C. Perishable items left at ambient temperature for over 2 hours should be discarded.",
+            "sources": [
+                {
+                    "title": "WHO Food Safety Guidelines: Temperature Control for Food Handlers",
+                    "organization": "World Health Organization (WHO)",
+                    "url": "https://www.who.int/activities/promoting-safe-food-handling",
+                    "type": "WHO Public Hygiene Manual"
+                }
+            ],
+            "disclaimer": "Educational knowledge assistant. For acute illness, seek clinical medical evaluation."
+        }
+    elif any(k in q for k in ["hygiene", "vendor", "stall", "clean", "water", "hand"]):
+        return {
+            "query": data.query,
+            "answer": "Wash hands with potable water and soap before handling food and after handling money. Keep food preparation surfaces clean and keep prepared food covered from flies and dust.",
+            "sources": [
+                {
+                    "title": "Codex Alimentarius Code of Hygienic Practice for Street-Vended Foods (CXC 43-1997)",
+                    "organization": "FAO / WHO Codex Alimentarius Commission",
+                    "url": "https://www.fao.org/fao-who-codexalimentarius/codex-texts/codes-of-practice/en/",
+                    "type": "International Food Standard"
+                }
+            ],
+            "disclaimer": "Educational knowledge assistant. For acute illness, seek clinical medical evaluation."
+        }
+    elif any(k in q for k in ["swollen", "bloated", "packet", "juice", "spoiled"]):
+        return {
+            "query": data.query,
+            "answer": "When a packaged food container is swollen or damaged, do not taste or consume it. Retain batch information and notify the retailer.",
+            "sources": [
+                {
+                    "title": "Food Safety and Quality Guidelines for Consumers",
+                    "organization": "World Health Organization (WHO)",
+                    "url": "https://www.who.int/news-room/fact-sheets/detail/food-safety",
+                    "type": "Public Food Safety Factsheet"
+                }
+            ],
+            "disclaimer": "Educational knowledge assistant. This prototype cannot determine contamination without laboratory testing."
+        }
+    else:
+        return {
+            "query": data.query,
+            "answer": "Relevant information was not found in the current knowledge base.",
+            "sources": [],
+            "disclaimer": "Educational knowledge assistant. Not an official FSSAI information system."
+        }
 
 @app.get("/api/analytics")
 def get_analytics():
